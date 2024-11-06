@@ -1,4 +1,6 @@
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
+import { BookOpen } from 'lucide-react';
 
 const ModuleProgress = () => {
   const modules = [
@@ -8,25 +10,34 @@ const ModuleProgress = () => {
   ];
 
   return (
-    <div className="module-progress bg-neutral-500 text-white p-4 rounded-lg shadow-md">
-      <h2 className="text-xl font-bold mb-2">Module Progress</h2>
-      <ul>
-        {modules.map((module, index) => (
-          <li key={index} className="mb-2">
-            <div className="flex justify-between">
-              <span>{module.name}</span>
-              <span>{module.progress}%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-              <div
-                className="bg-blue-600 h-2.5 rounded-full"
-                style={{ width: `${module.progress}%` }}
-              ></div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card className="w-full">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="text-xl font-bold">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-[#2B5E2E]" />
+            Module Progress
+          </div>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-4">
+          {modules.map((module, index) => (
+            <li key={index}>
+              <div className="flex justify-between mb-1">
+                <span className="text-sm font-medium">{module.name}</span>
+                <span className="text-sm font-medium">{module.progress}%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div
+                  className="bg-[#2B5E2E] h-2 rounded-full transition-all"
+                  style={{ width: `${module.progress}%` }}
+                ></div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
   );
 };
 
