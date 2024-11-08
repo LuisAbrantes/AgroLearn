@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-import { Play, BookOpen, Award, Settings, Users } from 'lucide-react';
+import { Play, BookOpen, Award, Settings, Users, Medal } from 'lucide-react';
+import UserRanking from './UserRanking';
+import DailyMissions from './DailyMissions';
+import { VirtualSimulator } from './simulator/VirtualSimulator';
+import { MaintenanceChecklist } from './maintenance/MaintenanceChecklist';
 
 const MainButtons = () => {
   const [activeSection, setActiveSection] = useState(null);
@@ -10,8 +14,16 @@ const MainButtons = () => {
       case 'simulation':
         return (
           <div className="mt-6 p-4 border rounded-lg">
-            <h3 className="text-xl font-bold mb-4">- Your Simulations -</h3>
-            <p className="text-gray-600">Simulation content coming soon...</p>
+            <h3 className="text-xl font-bold mb-4">Simulador Virtual</h3>
+            <VirtualSimulator />
+          </div>
+        );
+
+      case 'maintenance':
+        return (
+          <div className="mt-6 p-4 border rounded-lg">
+            <h3 className="text-xl font-bold mb-4">Checklist de Manutenção</h3>
+            <MaintenanceChecklist />
           </div>
         );
 
@@ -46,7 +58,20 @@ const MainButtons = () => {
                   Certified
                 </div>
               </div>
-              {/* Add more certificates */}
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold">Advanced Safety Procedures</h4>
+                <p className="text-sm text-gray-600">Completed: Feb 2024</p>
+                <div className="mt-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm inline-block">
+                  Certified
+                </div>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold">Equipment Maintenance Specialist</h4>
+                <p className="text-sm text-gray-600">Completed: Mar 2024</p>
+                <div className="mt-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm inline-block">
+                  Certified
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -96,6 +121,14 @@ const MainButtons = () => {
           </div>
         );
 
+      case 'ranking':
+        return (
+          <div className="mt-6 space-y-6">
+            <UserRanking />
+            <DailyMissions />
+          </div>
+        );
+
       default:
         return null;
     }
@@ -107,7 +140,7 @@ const MainButtons = () => {
         <CardHeader>
           <CardTitle>Main Menu</CardTitle>
         </CardHeader>
-        <CardContent className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <CardContent className="grid grid-cols-2 md:grid-cols-6 gap-4">
           <button
             onClick={() => setActiveSection('simulation')}
             className="h-32 flex flex-col items-center justify-center space-y-2 bg-[#2B5E2E] hover:bg-[#234B25] text-white rounded-lg transition-colors">
@@ -141,6 +174,13 @@ const MainButtons = () => {
             className="h-32 flex flex-col items-center justify-center space-y-2 border-2 border-[#2B5E2E] text-[#2B5E2E] rounded-lg hover:bg-[#2B5E2E] hover:text-white transition-colors">
             <Settings className="h-8 w-8" />
             <span>Settings</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSection('ranking')}
+            className="h-32 flex flex-col items-center justify-center space-y-2 border-2 border-[#2B5E2E] text-[#2B5E2E] rounded-lg hover:bg-[#2B5E2E] hover:text-white transition-colors">
+            <Medal className="h-8 w-8" />
+            <span>Ranking</span>
           </button>
         </CardContent>
       </Card>
