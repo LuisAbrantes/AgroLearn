@@ -5,6 +5,7 @@ import UserRanking from './UserRanking';
 import DailyMissions from './DailyMissions';
 import { VirtualSimulator } from './simulator/VirtualSimulator';
 import { MaintenanceChecklist } from './maintenance/MaintenanceChecklist';
+import EducationalMaterials from './EducationalMaterials';
 
 const MainButtons = () => {
   const [activeSection, setActiveSection] = useState(null);
@@ -30,19 +31,8 @@ const MainButtons = () => {
       case 'education':
         return (
           <div className="mt-6 p-4 border rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Educational Materials</h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-semibold">Tractor Model X Operations</h4>
-                <ul className="list-disc ml-6 mt-2">
-                  <li>Basic Controls and Safety Procedures</li>
-                  <li>Advanced Maneuvering Techniques</li>
-                  <li>Maintenance Guidelines</li>
-                  <li>Emergency Protocols</li>
-                </ul>
-              </div>
-              {/* Add more educational content sections */}
-            </div>
+            <h3 className="text-xl font-bold mb-4">Materiais de Estudo</h3>
+            <EducationalMaterials />
           </div>
         );
 
